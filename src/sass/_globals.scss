@@ -1,3 +1,15 @@
-body {
-    background: red;
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,300&family=Manrope:wght@600&display=swap');
+// colors
+$black: #000;
+$white: #fff;
+//mixins
+@mixin color-nav {
+    background: -webkit-linear-gradient(#10402a, #3ffca6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
+// fonts
+$deafult-font: 'Manrope',
+sans-serif;
