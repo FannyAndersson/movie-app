@@ -1,18 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { MovieContext } from '../MovieContext';
 
-const SimilarMovies = () => {
+const SimilarMovies = ({props}) => {
+   const { props: { match: { params } } } = props;
   const [similarMovies, setSimilarMovies] = useState('');
 
-          console.log(similarMovies, 'context');
-
-  const context = useContext(MovieContext);
-
   useEffect(() => {
-    const [data] = context;
     const getSimilarMovies = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${data.id}/similar?api_key=404c9d315cf694929f8ad3227b130aab&language=en-US&page=1`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}/similar?api_key=404c9d315cf694929f8ad3227b130aab&language=en-US&page=1`);
 
         if (response) {
           const result = await response.json();

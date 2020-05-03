@@ -7,25 +7,8 @@ import SimilarMovies from './SimilarMovies';
 import Reviews from './Reviews';
 
 
-const MovieDetails = () => {
-    const context = useContext(MovieContext);
-
-
-
-    useEffect(() => {
-
-    })
-
-
-    return(
-        <div>
-            <MovieInfo />
-             <Cast />
-             <SimilarMovies />
-             <Reviews />
-        </div>
-
-    )
-}
+const MovieDetails = (props) => (
+    <MovieInfo props={props} />
+)
 
 export default MovieDetails;

@@ -1,0 +1,23 @@
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    input {
+        background: none;
+        border: none;
+        border-bottom: 1px solid $white;
+        color: $white;
+        width: 350px;
+        font-family: $deafult-font;
+        &:focus {
+            outline: none;
+        }
+    }
+    .search-btn {
+        background: linear-gradient(45deg, rgb(63, 252, 182), rgb(16, 64, 42));
+        margin-left: 10px;
+        text-transform: uppercase;
+        color: $white;
+        font-family: $deafult-font;
+    }
+}

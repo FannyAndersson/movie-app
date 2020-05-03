@@ -10,6 +10,9 @@ export const MovieProvider = (props) => {
 
     const [input, setInput] = useState('')
 
+
+    // hämta nowplaying, latest movies, most popular
+
     useEffect(() => {
       const getNowPlaying = async () => {
         try {
@@ -31,6 +34,8 @@ export const MovieProvider = (props) => {
       };
       getNowPlaying();
     }, []);
+
+
 
 
     return(

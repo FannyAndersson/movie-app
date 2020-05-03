@@ -1,0 +1,22 @@
+@import '_globals.scss';
+.navbar-ul {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40px;
+    padding: 20px;
+    margin: 0;
+    li {
+        list-style: none;
+        a {
+            text-transform: uppercase;
+            font-family: $deafult-font;
+            @include color-nav;
+            &:hover {
+                text-decoration: none;
+                border-top: 4px solid;
+                border-image-source: linear-gradient(45deg, rgb(63, 252, 182), rgb(16, 64, 42));
+                border-image-slice: 1;
+            }
+        }
+    }
+}

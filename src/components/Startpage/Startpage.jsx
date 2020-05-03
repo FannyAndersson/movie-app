@@ -8,8 +8,8 @@ const StartPage = () => {
 
   return (
     <div>
-        <NowPlayingMovies />
-        <TopRankedMovies />
+         <NowPlayingMovies />
+         <TopRankedMovies />
     </div>
   );
 };

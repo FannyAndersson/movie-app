@@ -1,0 +1,38 @@
+h1 {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+
+.show-more-movies-wrapper {
+    text-align: center;
+    span {
+        color: #c4c3c0;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.movie-info-wrapper {
+    display: flex;
+    padding: 20px;
+    .movie-info-div {
+        display: grid;
+        padding: 15px;
+        h4 {
+            color: white;
+        }
+        .movie-info {
+            color: #3ffcb6;
+        }
+        .movie-info-overview {
+            color: white;
+            margin-bottom: 0;
+            a {
+                color: #b3b1af;
+                text-decoration: none;
+            }
+        }
+    }
+}
