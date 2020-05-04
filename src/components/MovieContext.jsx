@@ -6,7 +6,6 @@ export const MovieContext = createContext();
 
 export const MovieProvider = (props) => {
     const [moviePlayingNow, setMoviePlayingNow] = useState([]);
-    console.log(moviePlayingNow, 'lfpåeofkej')
 
     const [input, setInput] = useState('')
 
@@ -24,7 +23,6 @@ export const MovieProvider = (props) => {
             if (response.ok) {
               const keys = result.results;
               const movie = keys[Math.floor(Math.random() * keys.length)];
-              console.log(movie, 'mvie');
               setMoviePlayingNow(movie);
             }
           }

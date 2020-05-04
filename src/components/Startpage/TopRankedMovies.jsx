@@ -59,9 +59,9 @@ const TopRankedMovies = () => {
             );
           }) : null}
       <div className="show-more-movies-wrapper">
-      <span className="show-more-movies-link" onClick={handleClick}>
-        Show more movies
-      </span>
+        <span className="show-more-movies-link" onClick={handleClick}>
+            Show more movies
+        </span>
       </div>
     </div>;
 };

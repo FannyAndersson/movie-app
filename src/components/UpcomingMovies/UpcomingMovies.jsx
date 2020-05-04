@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 const UpcomingMovies = () => {
   const [upcomingMovies, setUpcomingMovies] = useState('');
 
+  const [upcomingMoviesToRender, setUpcomingMoviesToRender] = useState(8);
+
   const context = useContext(MovieContext);
 
   useEffect(() => {
@@ -28,26 +30,36 @@ const UpcomingMovies = () => {
     getUpcomingMovies();
   }, []);
 
+  const handleClick = () => {
+    setUpcomingMoviesToRender(upcomingMoviesToRender + 8);
+  }
+
   return <div>
-      <h3>Kommande filmer</h3>
-      {upcomingMovies ? upcomingMovies.map(movie => {
-            return <div className="movie-info-wrapper" key={movie.id}>
-                <Link to={`/movie/${movie.id}`}>
-                  {' '}
-                  <img alt="" src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} />
-                </Link>
-                <div className="movie-info-div">
-                  <h4>{movie.title}</h4>
-                  <p className="movie-info">{movie.release_date}</p>
-                  <p className="movie-info">{movie.vote_average}</p>
-                  <p className="movie-info-overview">
-                    {movie.overview.slice(0, 200) + '...'}
-                    <Link to={`/movie/${movie.id}`}>Läs mer</Link>
-                  </p>
-                </div>
-              </div>;
-      }) : null}
-  </div>;
+      <h1>Kommande filmer</h1>
+      {upcomingMovies ? upcomingMovies.slice(0, upcomingMoviesToRender).map(movie => {
+          return <div className="movie-info-wrapper" key={movie.id}>
+              <Link to={`/movie/${movie.id}`}>
+                {' '}
+                <img alt="" src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} />
+              </Link>
+              <div className="movie-info-div">
+                <h4>{movie.title}</h4>
+                <p className="movie-info">{movie.release_date}</p>
+                <p className="movie-info">{movie.vote_average}</p>
+                <p className="movie-info-overview">
+                  {movie.overview.slice(0, 200) + '...'}
+                  <Link to={`/movie/${movie.id}`}>Läs mer</Link>
+                </p>
+              </div>
+            </div>;
+        }) : null}
+
+      <div className="show-more-movies-wrapper">
+        <span className="show-more-movies-link" onClick={handleClick}>
+          Show more movies
+        </span>
+      </div>
+    </div>;
 };
 
 export default UpcomingMovies;

@@ -12,7 +12,6 @@ const NowPlayingMovies = () => {
 
 
  const [moviePlayingNow, setMoviePlayingNow] = useState([]);
- console.log(moviePlayingNow, 'lfpåeofkej');
 
  const [input, setInput] = useState('');
 
@@ -27,7 +26,6 @@ const NowPlayingMovies = () => {
          if (response.ok) {
            const keys = result.results;
            const movie = keys[Math.floor(Math.random() * keys.length)];
-           console.log(movie, 'mvie');
            setMoviePlayingNow(movie);
          }
        }
