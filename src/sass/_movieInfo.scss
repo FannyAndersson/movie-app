@@ -36,9 +36,17 @@
                 color: white;
             }
         }
-        .vote-average {
-            color: white;
-            font-weight: bold;
+        .vote-div {
+            display: flex;
+            svg {
+                margin-top: 3px;
+                color: yellow;
+                margin-right: 8px;
+            }
+            .vote-average {
+                color: white;
+                font-weight: bold;
+            }
         }
     }
 }

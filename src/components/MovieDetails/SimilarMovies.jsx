@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 
 const SimilarMovies = ({props}) => {
-   const { props: { match: { params } } } = props;
+  const params = props.match.params
+  //  const { props: { match: { params } } } = props;
 
   const [similarMovies, setSimilarMovies] = useState('');
 
@@ -31,7 +32,7 @@ const SimilarMovies = ({props}) => {
 
 
   return <div>
-      {similarMovies.length === 0 ? null : <h1 className="similar-movies-title">
+       {similarMovies.length === 0 ? null : <h1 className="similar-movies-title">
           Similar Movies
         </h1>}
       {similarMovies ? similarMovies.slice(0, similarMoviesToRender).map(movie => {

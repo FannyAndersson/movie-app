@@ -1,0 +1,124 @@
+.login-wrapper {
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .login-wrapper-div {
+        color: #a6a6a6;
+        width: 600px;
+        text-align: center;
+        span {
+            color: #fa9819;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .login-form-div {
+            margin-top: 17px;
+            border: 1px solid white;
+            padding: 20px;
+            input {
+                width: 60%;
+                margin-left: 78px;
+                background: none;
+                border: none;
+                border-bottom: 1px solid white;
+                color: white;
+                &:focus {
+                    outline: none;
+                }
+            }
+            button {
+                background: linear-gradient(45deg, #3ffcb6, #10402a);
+                margin-left: 10px;
+                text-transform: uppercase;
+                color: #fff;
+                font-family: "Manrope", sans-serif;
+                border: none;
+                border-radius: 20px;
+                height: 40px;
+                width: 90px;
+            }
+        }
+        .speech-bubble-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            -webkit-animation: fadein 5s;
+            -moz-animation: fadein 5s;
+            -ms-animation: fadein 5s;
+            -o-animation: fadein 5s;
+            animation: fadein 5s;
+            .speech-bubble {
+                position: relative;
+                background: #b9b55c;
+                border-radius: 5.4em;
+                width: 230px;
+                padding: 40px 10px;
+                margin: 1em 0;
+                text-align: center;
+                color: black;
+                font-weight: bold;
+                font-size: 86%;
+            }
+            .speech-bubble:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border: 20px solid transparent;
+                border-top-color: #b9b55c;
+                border-bottom: 0;
+                border-left: 0;
+                margin-left: -10px;
+                margin-bottom: -20px;
+            }
+        }
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

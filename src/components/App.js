@@ -15,8 +15,11 @@ import Startpage from './Startpage/Startpage';
 import SearchResult from './Search/SearchResult';
 import Login from './Login/Login';
 import MyProfile from './MyProfile/MyProfile';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-
+library.add(fab, faStar);
 
 
 console.log(process.env.REACT_APP_TMDB_KEY);

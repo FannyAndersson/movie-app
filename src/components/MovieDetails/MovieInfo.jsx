@@ -3,10 +3,12 @@ import { Row } from 'reactstrap';
 import SimilarMovies from './SimilarMovies'
 import Reviews from './Reviews'
 import Cast from './Cast'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MovieInfo = (props) => {
     const [movieInfo, setMovieInfo] = useState('');
-    const { props: { match: { params } } } = props;
+    const params = props.match.params;
+  console.log(params, 'det')
 
     const [releaseYear, setReleaseYear] = useState('');
 
@@ -57,7 +59,10 @@ const MovieInfo = (props) => {
                     return <span key={genre.id}>{genre.name}</span>;
                   }) : null}
               </div>
+              <div className="vote-div">
+              <FontAwesomeIcon icon="star" />
               <p className="vote-average">{movieInfo.vote_average}</p>
+              </div>
             </div>
           </section>}
         <div className="overview"> {movieInfo.overview}</div>

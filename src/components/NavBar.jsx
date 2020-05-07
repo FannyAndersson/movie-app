@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { AuthContext } from './AuthContext.jsx';
+import Logout from './Logout/Logout';
 
 
 const NavBar = () => {
@@ -20,12 +21,10 @@ const NavBar = () => {
             <li>
               <Link to="/popular-movies">Pupular movies</Link>
             </li>
-             {activateUser === true ? <li>
-              <Link to="/my-profile">My profile</Link>
-            </li> : null}
             {activateUser === true ? <li>
-                <Link>Logout</Link>
-              </li> : <li>
+                <Link to="/my-profile">My profile</Link>
+              </li> : null}
+            {activateUser === true ? <Logout /> : <li>
                 <Link to="/login">Login</Link>
               </li>}
           </ul>
