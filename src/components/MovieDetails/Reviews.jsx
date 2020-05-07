@@ -3,6 +3,9 @@ import React, { useEffect, useContext, useState } from 'react';
 
 const Reviews = ({id}) => {
   const [reviews, setReviews] = useState('');
+  console.log(reviews, 'rev')
+
+  const [reviewsToRender, setReviewsToRender] = useState(3);
 
 //   const context = useContext(MovieContext);
 
@@ -27,16 +30,28 @@ const Reviews = ({id}) => {
     getReviews();
   }, []);
 
-  return (
-    <div>
-    {reviews ? reviews.map(review => {
-        return <div key={review.id}>
-            <p>{review.author}</p>
-            <p>{review.content}</p>
-          </div>;
-    }) : null}
-    </div>
-  );
+  const handleClick = () => {
+    setReviewsToRender(reviewsToRender + 2)
+  }
+
+  return <div>
+       {reviews.length === 0 ? null : <h3>Reviews</h3>}
+      {reviews ? reviews.slice(0, reviewsToRender).map(review => {
+          return <div className="reviews" key={review.id}>
+              <p className="author">{review.author}</p>
+              <p className="content">
+                {review.content.slice(0, 200) + '...'}Read more
+              </p>
+            </div>;
+        }) : null}
+        {reviews.length >= 4 ?
+      <div className="show-more-movies-wrapper">
+        <span className="show-more-movies-link" onClick={handleClick}>
+          Show more reviews
+        </span>
+      </div>
+      : null }
+    </div>;
 };
 
 export default Reviews;

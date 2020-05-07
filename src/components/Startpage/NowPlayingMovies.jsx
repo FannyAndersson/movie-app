@@ -1,15 +1,10 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { MovieContext } from '../MovieContext';
 
 
 
 
 const NowPlayingMovies = () => {
-
-    const context = useContext(MovieContext);
-
-
 
  const [moviePlayingNow, setMoviePlayingNow] = useState([]);
 

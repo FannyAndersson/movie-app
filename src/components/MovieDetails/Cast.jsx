@@ -1,11 +1,17 @@
 import React, { useEffect, useContext, useState } from 'react';
 import placeholderImage from './person-icon.png';
+import { Container, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 const Cast = ({id}) => {
   const [castAndCrewInfo, setCastAndCrewInfo] = useState('');
 
+  const [castToRender, setCastToRender] = useState(3);
 
+  const handleClick = () => {
+    setCastToRender(castToRender + 4);
+  };
 //   const context = useContext(MovieContext);
 
   useEffect(() => {
@@ -29,29 +35,53 @@ const Cast = ({id}) => {
 
 
   return <div>
-      <div className="cast-members">
+      <div className="crew-members">
         {castAndCrewInfo.crew ? castAndCrewInfo.crew.map((crew, index) => {
+            console.log(crew, 'crew');
             return <div key={index}>
-                  <div>
-                     <span>{crew.job === 'Director' ? <p>Regissör: {crew.name} </p> : null }</span>
-                    {/* <p>{cast.character}</p> */}
-                  </div>
+                <div className="director">
+                  {crew.job === 'Director' ? (
+                    <p>Director: {crew.name}</p>
+                  ) : null}
+                </div>
               </div>;
           }) : null}
       </div>
 
       <div className="cast-members">
-        {castAndCrewInfo.cast ? castAndCrewInfo.cast.map(cast => {
-            return <div key={cast.id}>
-                <div>
-                  {cast.profile_path === null ? <img alt="" src={placeholderImage} /> : <img alt="" src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`} />}
+        {castAndCrewInfo.cast ? castAndCrewInfo.cast
+            .slice(0, castToRender)
+            .map(cast => {
+              return (
+                <div key={cast.id}>
                   <div>
-                    <p>{cast.name}</p>
-                    <p>{cast.character}</p>
+                    <Link>
+                      {cast.profile_path === null ? (
+                        <img
+                          className="no-img"
+                          alt=""
+                          src={placeholderImage}
+                        />
+                      ) : (
+                        <img
+                          alt=""
+                          src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}
+                        />
+                      )}
+                    </Link>
+                    <div className="cast-info">
+                      <p>{cast.name}</p>
+                      <p>Charachter: {cast.character}</p>
+                    </div>
                   </div>
                 </div>
-              </div>;
-          }) : null}
+              );
+            }) : null}
+      </div>
+      <div className="show-more-movies-wrapper">
+        <span className="show-more-movies-link" onClick={handleClick}>
+          Show more cast
+        </span>
       </div>
     </div>;
 

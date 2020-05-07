@@ -36,41 +36,46 @@ const MovieInfo = (props) => {
     const genres = movieInfo.genres;
 
     return <div>
-        <div>{movieInfo.title}</div>
         {!movieInfo ? <p>
             Loading movie
           </p> : <section className="movie-info-section" style={{ backgroundImage: `linear-gradient(to left, rgba(0,0, 0, 0.2) 0%, rgba(0,0, 0, 0.5) 40%, rgba(0, 0, 0, 1) 100%),url(http://image.tmdb.org/t/p/original/${movieInfo.backdrop_path})` }}>
             <div className="info-wrapper">
               <Row>
-                <h1>{movieInfo.title}</h1>
-                <span>({releaseYear})</span>
+                {movieInfo.title === movieInfo.original_title ? <h1>
+                    <h1 className="movieinfo-title">{movieInfo.title}</h1>
+                  </h1> : <Row>
+                    <h1 className="movieinfo-title">{movieInfo.title}</h1>
+                    <p className="original-title">
+                      {movieInfo.original_title}(original title)
+                    </p>
+                  </Row>}
+                <p className="release-year">({releaseYear})</p>
               </Row>
-              <p>{movieInfo.original_title}(orginaltitel)</p>
-              <p>{movieInfo.runtime} min</p>
+              <p className="runtime">{movieInfo.runtime} min</p>
               <div className="genres">
                 {genres ? genres.map(genre => {
                     return <span key={genre.id}>{genre.name}</span>;
                   }) : null}
               </div>
-              <p>{movieInfo.vote_average}</p>
+              <p className="vote-average">{movieInfo.vote_average}</p>
             </div>
           </section>}
-        <div> {movieInfo.overview}</div>
-        <div>
+        <div className="overview"> {movieInfo.overview}</div>
+        <div className="lang-date">
           <p>
-            Språk: <span>
+            Language: <span>
               {movieInfo.original_language === 'en' ? (
-                'Engelska'
+                'English'
               ) : (
                 movieInfo.original_language
               )}
             </span>
           </p>
-          <p>Utgivningsdatum: {movieInfo.release_date}</p>
+          <p>Release date: {movieInfo.release_date}</p>
         </div>
         <Cast id={params.id} />
-        <SimilarMovies props={props} />
         <Reviews id={params.id} />
+        <SimilarMovies props={props} />
       </div>;
 
 }

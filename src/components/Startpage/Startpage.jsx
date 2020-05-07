@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import NowPlayingMovies from './NowPlayingMovies';
 import TopRankedMovies from './TopRankedMovies';
 
+
 const StartPage = () => {
 
 

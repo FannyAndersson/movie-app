@@ -6,14 +6,15 @@ import '../sass/source.scss';
 import AddMovie from './AddMovie';
 import MostPopular from './MostPopular/MostPopular';
 import UpcomingMovies from './UpcomingMovies/UpcomingMovies';
-import {MovieProvider} from './MovieContext';
+import { AuthProvider } from './AuthContext';
 import Header from './Header';
-import MovieDetails from './MovieDetails/MovieDetails';
+import MovieInfo from './MovieDetails/MovieInfo';
 import NowPlayingMovies from './Startpage/NowPlayingMovies';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Startpage from './Startpage/Startpage';
-// import { useRoutes, A } from 'hookrouter';
-
+import SearchResult from './Search/SearchResult';
+import Login from './Login/Login';
+import MyProfile from './MyProfile/MyProfile';
 
 
 
@@ -34,19 +35,22 @@ function App() {
 
 
 
-  return <MovieProvider>
+  return <AuthProvider>
       <BrowserRouter>
         <React.Fragment>
           <Header />
           <Switch>
             <Route path="/" exact component={Startpage} />
-            <Route path="/kommande-filmer" exact component={UpcomingMovies} />
-            <Route path="/populara-filmer" exact component={MostPopular} />
-            <Route path="/movie/:id" exact component={MovieDetails} />
+            <Route path="/search/:id" exact component={SearchResult} />
+            <Route path="/upcoming-movies" exact component={UpcomingMovies} />
+            <Route path="/popular-movies" exact component={MostPopular} />
+            <Route path="/movie/:id" exact component={MovieInfo} />
+            <Route path="/my-profile" exact component={MyProfile} />
+            <Route path="/login" exact component={Login} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>
-    </MovieProvider>;
+    </AuthProvider>;
 }
 
 

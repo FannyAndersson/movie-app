@@ -1,0 +1,57 @@
+.movie-info-section {
+    height: 70vh;
+    width: 100%;
+    background-size: cover;
+    background-position: right top;
+    z-index: -67;
+    .info-wrapper {
+        padding: 30px;
+        .row {
+            align-items: center;
+            margin-left: 0;
+            .movieinfo-title {
+                font-family: 'Raleway', sans-serif;
+                color: white;
+            }
+            .original-title {
+                font-size: 16px;
+                margin-right: 20px;
+                color: white;
+                font-family: 'Raleway', sans-serif;
+            }
+            .release-year {
+                font-size: 25px;
+                color: white;
+            }
+        }
+        .runtime {
+            color: #3ffcb6;
+        }
+        .genres {
+            display: grid;
+            color: white;
+            font-family: 'Raleway', sans-serif;
+            margin-bottom: 20px;
+            span {
+                color: white;
+            }
+        }
+        .vote-average {
+            color: white;
+            font-weight: bold;
+        }
+    }
+}
+
+.overview {
+    color: #a6a6a6;
+    padding: 10px;
+    line-height: 25px;
+}
+
+.lang-date {
+    padding: 10px;
+    p {
+        color: #a6a6a6;
+    }
+}

@@ -1,8 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const SimilarMovies = ({props}) => {
    const { props: { match: { params } } } = props;
+
   const [similarMovies, setSimilarMovies] = useState('');
+
+  const [similarMoviesToRender, setSimilarMoviesToRender] = useState(8);
 
   useEffect(() => {
     const getSimilarMovies = async () => {
@@ -20,22 +25,36 @@ const SimilarMovies = ({props}) => {
     getSimilarMovies();
   }, []);
 
-  return <div>
-      {similarMovies ? similarMovies.map(movie => {
-          return <a key={movie.id} href={`/movie/${movie.id}`} className="movie-link">
-              {' '}
-              <div className="cast-member-card">
-                <div className="image-container">
-                  <img alt="" src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} />
-                </div>
-                <div className="cast-info">
-                  <p>{movie.title}</p>
-                  <span>{movie.release_date}</span>
-                </div>
-              </div>
-            </a>;
-      }) : null }
+  const handleClick = () => {
+    setSimilarMoviesToRender(similarMoviesToRender + 4);
+  };
 
+
+  return <div>
+      {similarMovies.length === 0 ? null : <h1 className="similar-movies-title">
+          Similar Movies
+        </h1>}
+      {similarMovies ? similarMovies.slice(0, similarMoviesToRender).map(movie => {
+          return <div className="movie-info-wrapper" key={movie.id}>
+              <Link to={`/movie/${movie.id}`} className="movie-link">
+                <img alt="" src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} />
+              </Link>
+              <div className="movie-info-div">
+                <h4>{movie.title}</h4>
+                <p className="movie-info">{movie.release_date}</p>
+                <p className="movie-info">{movie.vote_average}</p>
+                <p className="movie-info-overview">
+                  {movie.overview.slice(0, 200) + '...'}
+                  <Link to={`/movie/${movie.id}`}>Read more</Link>
+                </p>
+              </div>
+            </div>;
+        }) : null}
+      <div className="show-more-movies-wrapper">
+        <span className="show-more-movies-link" onClick={handleClick}>
+          Show more movies
+        </span>
+      </div>
     </div>;
 };
 
