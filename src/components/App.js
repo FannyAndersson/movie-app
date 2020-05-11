@@ -18,7 +18,9 @@ import MyProfile from './MyProfile/MyProfile';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import {Container} from 'reactstrap';
 
+import SimilarMovies from './MovieDetails/SimilarMovies'
 library.add(fab, faStar);
 
 
@@ -34,6 +36,7 @@ console.log(process.env.REACT_APP_TMDB_KEY);
 
 function App() {
 
+
 // const routeResult = useRoutes(routes);
 
 
@@ -43,13 +46,17 @@ function App() {
         <React.Fragment>
           <Header />
           <Switch>
-            <Route path="/" exact component={Startpage} />
-            <Route path="/search/:id" exact component={SearchResult} />
-            <Route path="/upcoming-movies" exact component={UpcomingMovies} />
-            <Route path="/popular-movies" exact component={MostPopular} />
-            <Route path="/movie/:id" exact component={MovieInfo} />
-            <Route path="/my-profile" exact component={MyProfile} />
-            <Route path="/login" exact component={Login} />
+            <div>
+              {/* <SearchResult /> */}
+              {/* <Route path="/search" exact component={SearchResult} /> */}
+              <Route path="/" exact component={Startpage} />
+              <Route path="/upcoming-movies" exact component={UpcomingMovies} />
+              <Route path="/popular-movies" exact component={MostPopular} />
+              <Route path="/movie/:id" exact component={MovieInfo} />
+               {/* <Route path='/movie/:id' component={SimilarMovies} /> */}
+              <Route path="/my-profile" exact component={MyProfile} />
+              <Route path="/login" exact component={Login} />
+            </div>
           </Switch>
         </React.Fragment>
       </BrowserRouter>

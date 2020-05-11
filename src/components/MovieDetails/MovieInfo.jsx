@@ -32,7 +32,7 @@ const MovieInfo = (props) => {
         }
       };
       getMovieDetails();
-    }, []);
+    }, [movieInfo]);
 
 
     const genres = movieInfo.genres;
@@ -60,8 +60,8 @@ const MovieInfo = (props) => {
                   }) : null}
               </div>
               <div className="vote-div">
-              <FontAwesomeIcon icon="star" />
-              <p className="vote-average">{movieInfo.vote_average}</p>
+                <FontAwesomeIcon icon="star" />
+                <p className="vote-average">{movieInfo.vote_average}</p>
               </div>
             </div>
           </section>}
@@ -80,7 +80,7 @@ const MovieInfo = (props) => {
         </div>
         <Cast id={params.id} />
         <Reviews id={params.id} />
-        <SimilarMovies props={props} />
+         <SimilarMovies props={props} />
       </div>;
 
 }

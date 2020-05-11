@@ -1,12 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {AuthContext} from '../AuthContext.jsx';
-import axios from 'axios';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory
+  useHistory,
 } from 'react-router-dom';
 
 
@@ -15,27 +10,42 @@ const Login = () => {
     const history = useHistory();
 
     const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken] = useContext(AuthContext);
-    console.log(activateUser)
+    console.log('sessionId', sessionId)
 
     const [activateLoginForm, setActivateLoginForm] = useState(false);
 
-    const login = async () => {
-      await axios({
-        method: 'post',
-        url:
-          'https://api.themoviedb.org/3/authentication/session/new?api_key=404c9d315cf694929f8ad3227b130aab',
-        data: {
-          request_token: requestToken
-        }
-      })
-        .then(response => setSessionId(response.data.session_id))
-        .catch(error => console.log(error));
-    };
+
+   const login = async () => {
+     try {
+       const addBody = {
+                     request_token: requestToken
+                   };
+       const response = await fetch('https://api.themoviedb.org/3/authentication/session/new?api_key=404c9d315cf694929f8ad3227b130aab', {
+         method: 'POST',
+         body: JSON.stringify(addBody),
+         headers: {
+           'Content-Type': 'application/json'
+         }
+       });
+
+       if (response.ok) {
+           const result = await response.json()
+           const thisSessionId = result.session_id;
+            setSessionId(thisSessionId)
+            localStorage.setItem('session', thisSessionId);
+       }
+     } catch (error) {
+       console.error('Error:', error);
+     }
+   };
+
+
 
      const approve = () => {
        window.open(`https://www.themoviedb.org/authenticate/${requestToken}`, '_blank');
     setActivateLoginForm(true)
      };
+
 
 
     const handleSubmit = (e) => {
@@ -68,6 +78,7 @@ const Login = () => {
           </div> : null}
       </div>
       </div>
+
 }
 
 

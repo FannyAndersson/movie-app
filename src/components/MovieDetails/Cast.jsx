@@ -37,7 +37,6 @@ const Cast = ({id}) => {
   return <div>
       <div className="crew-members">
         {castAndCrewInfo.crew ? castAndCrewInfo.crew.map((crew, index) => {
-            console.log(crew, 'crew');
             return <div key={index}>
                 <div className="director">
                   {crew.job === 'Director' ? (
@@ -48,22 +47,33 @@ const Cast = ({id}) => {
           }) : null}
       </div>
 
-      <div className="cast-members">
+      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }} className="cast-members">
         {castAndCrewInfo.cast ? castAndCrewInfo.cast
             .slice(0, castToRender)
             .map(cast => {
-              return (
-                <div key={cast.id}>
+              return <div key={cast.id}>
                   <div>
                     <Link>
                       {cast.profile_path === null ? (
                         <img
+                          style={{
+                            width: '200px',
+                            height: '200px',
+                            borderRadius: '50%',
+                            objectFit: 'cover'
+                          }}
                           className="no-img"
                           alt=""
                           src={placeholderImage}
                         />
                       ) : (
                         <img
+                          style={{
+                            width: '200px',
+                            height: '200px',
+                            borderRadius: '50%',
+                            objectFit: 'cover'
+                          }}
                           alt=""
                           src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}
                         />
@@ -74,8 +84,7 @@ const Cast = ({id}) => {
                       <p>Charachter: {cast.character}</p>
                     </div>
                   </div>
-                </div>
-              );
+                </div>;
             }) : null}
       </div>
       <div className="show-more-movies-wrapper">

@@ -1,19 +1,23 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import SimilarMovieList from './SimilarMovieList';
+import { useHistory } from 'react-router-dom';
 
 const SimilarMovies = ({props}) => {
+   const history = useHistory();
+
   const params = props.match.params
+  console.log(props)
   //  const { props: { match: { params } } } = props;
 
   const [similarMovies, setSimilarMovies] = useState('');
 
-  const [similarMoviesToRender, setSimilarMoviesToRender] = useState(8);
+  const [similarMoviesToRender, setSimilarMoviesToRender] = useState(4);
 
   useEffect(() => {
     const getSimilarMovies = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}/similar?api_key=404c9d315cf694929f8ad3227b130aab&language=en-US&page=1`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${props.match.params.id}/similar?api_key=404c9d315cf694929f8ad3227b130aab&language=en-US&page=1`);
 
         if (response) {
           const result = await response.json();
@@ -37,7 +41,7 @@ const SimilarMovies = ({props}) => {
         </h1>}
       {similarMovies ? similarMovies.slice(0, similarMoviesToRender).map(movie => {
           return <div className="movie-info-wrapper" key={movie.id}>
-              <Link to={`/movie/${movie.id}`} className="movie-link">
+              <Link onClick={() => history.push(`/movie/${movie.id}`)} className="movie-link">
                 <img alt="" src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} />
               </Link>
               <div className="movie-info-div">
@@ -51,11 +55,13 @@ const SimilarMovies = ({props}) => {
               </div>
             </div>;
         }) : null}
+         {similarMovies.length === 0 ? null :
       <div className="show-more-movies-wrapper">
         <span className="show-more-movies-link" onClick={handleClick}>
           Show more movies
         </span>
       </div>
+        }
     </div>;
 };
 

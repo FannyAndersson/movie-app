@@ -7,14 +7,14 @@ export const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
 
- const [requestToken, setRequestToken] = useState(null);
+ const [requestToken, setRequestToken] = useState('');
  console.log(requestToken);
 
  const [activateUser, setActivateUser] = useState(false);
   console.log(activateUser, 'authuseractiv')
 
  const [sessionId, setSessionId] = useState(null);
- console.log(sessionId);
+ console.log('sessionsnansfnfsanfasnafs', sessionId);
 
 
  useEffect(() => {

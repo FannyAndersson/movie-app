@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-
-
-const SearchResut = ({props}) => {
+const SearchResult = ({props}) => {
     const movieQuery = props;
 
     const [resultOfSearch, setResultOfSearch] = useState('');
@@ -58,4 +56,4 @@ const SearchResut = ({props}) => {
 }
 
 
-export default SearchResut;
+export default SearchResult;

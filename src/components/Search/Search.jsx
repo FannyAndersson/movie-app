@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import SearchResult from './SearchResult';
 
-
 const Search = () => {
-
     const [movieQuery, setMovieQuery] = useState('');
     console.log(movieQuery)
 
@@ -27,8 +25,8 @@ const Search = () => {
             Sök
           </button>
 
-        <div>
-          <SearchResult props={movieQuery} />
+         <div>
+           <SearchResult props={movieQuery} />
         </div>
       </form>;
 }

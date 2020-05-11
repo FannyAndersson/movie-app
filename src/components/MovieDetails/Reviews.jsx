@@ -34,8 +34,8 @@ const Reviews = ({id}) => {
     setReviewsToRender(reviewsToRender + 2)
   }
 
-  return <div>
-       {reviews.length === 0 ? null : <h3>Reviews</h3>}
+  return <div className="reviews-wrapper">
+       {reviews.length === 0 ? null : <h1 className="review-title">Reviews</h1>}
       {reviews ? reviews.slice(0, reviewsToRender).map(review => {
           return <div className="reviews" key={review.id}>
               <p className="author">{review.author}</p>
