@@ -19,6 +19,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {Container} from 'reactstrap';
+import {ListProvider} from './ListContext';
 
 import SimilarMovies from './MovieDetails/SimilarMovies'
 library.add(fab, faStar);
@@ -42,6 +43,7 @@ function App() {
 
 
   return <AuthProvider>
+    <ListProvider>
       <BrowserRouter>
         <React.Fragment>
           <Header />
@@ -60,6 +62,7 @@ function App() {
           </Switch>
         </React.Fragment>
       </BrowserRouter>
+      </ListProvider>
     </AuthProvider>;
 }
 

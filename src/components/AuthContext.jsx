@@ -16,6 +16,8 @@ export const AuthProvider = (props) => {
  const [sessionId, setSessionId] = useState(null);
  console.log('sessionsnansfnfsanfasnafs', sessionId);
 
+ const [accountId, setAccountId] = useState(null);
+ console.log(accountId, 'accoundID');
 
  useEffect(() => {
    const getRequestToken = async () => {
@@ -24,7 +26,6 @@ export const AuthProvider = (props) => {
        if (response) {
          const result = await response.json();
          setRequestToken(result.request_token);
-         console.log(result);
        }
      } catch (error) {
        console.error(error);
@@ -36,7 +37,7 @@ export const AuthProvider = (props) => {
 
 
     return(
-        <AuthContext.Provider value={[sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken]}>
+        <AuthContext.Provider value={[sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId]}>
             {props.children}
         </AuthContext.Provider>
     )

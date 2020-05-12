@@ -9,10 +9,11 @@ const Login = () => {
 
     const history = useHistory();
 
-    const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken] = useContext(AuthContext);
+    const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId] = useContext(AuthContext);
     console.log('sessionId', sessionId)
 
     const [activateLoginForm, setActivateLoginForm] = useState(false);
+
 
 
    const login = async () => {
@@ -33,9 +34,23 @@ const Login = () => {
            const thisSessionId = result.session_id;
             setSessionId(thisSessionId)
             localStorage.setItem('session', thisSessionId);
+        try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/account?api_key=404c9d315cf694929f8ad3227b130aab&session_id=${thisSessionId}`
+        );
+        console.log(response, 'resp');
+
+        if (response) {
+          const result = await response.json();
+            setAccountId(result.id)
+          console.log('profile', result.id);
+        }
+      } catch (error) {
+        console.log(error);
+      }
        }
      } catch (error) {
-       console.error('Error:', error);
+       console.log('Error:', error);
      }
    };
 
@@ -64,6 +79,7 @@ const Login = () => {
         </div>
         <p>Activate your acount by clicking the link below</p>
         <span onClick={approve}>Active and approve your account</span>
+
         {activateLoginForm === true ? <div className="login-form-div">
             <p>Your login is: "{requestToken}"</p>
             <p>Login</p>

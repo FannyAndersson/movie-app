@@ -1,37 +1,25 @@
 import React, {useEffect, useContext} from 'react';
 import { AuthContext } from '../AuthContext.jsx';
+import { ListContext } from '../ListContext.jsx';
 
 
 const MyProfile = () => {
 
-    const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken] = useContext(AuthContext);
+    const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId] = useContext(AuthContext);
     console.log(sessionId, 'ses')
 
-// useEffect(() => {
-//   // const [data] = context;
-//   const getAccountDetails = async () => {
-//     try {
-//       const response = await fetch(
-//         `https://api.themoviedb.org/3/account?api_key=404c9d315cf694929f8ad3227b130aab&session_id=${sessionId}`
-//       );
+    const {createList} = useContext(ListContext);
 
-//       if (response) {
-//         const result = await response.json();
-//         console.log(result, 'ihh');
-//         // setCastAndCrewInfo(result);
-//       }
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-//   getAccountDetails();
-// }, []);
-
+    const handleSubmit = (e) => {
+        createList();
+        e.preventDefault();
+    }
 
     return (
         <div>
-
-            dksj
+            <form onClick={handleSubmit}>
+            <button type="submit">Create list</button>
+            </form>
             </div>
     )
 }

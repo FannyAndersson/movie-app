@@ -5,7 +5,7 @@ import { AuthContext } from '../AuthContext.jsx';
 
 const Logout = () => {
 
-    const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken] = useContext(AuthContext);
+    const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId] = useContext(AuthContext);
     console.log(sessionId, 'sessionid');
 
     const logout = async () => {
@@ -25,6 +25,7 @@ const Logout = () => {
            localStorage.clear();
            setSessionId(null);
            setActivateUser(false);
+           setAccountId(null);
        }
      } catch (error) {
        console.error('Error:', error);
