@@ -32,7 +32,8 @@ const MovieInfo = (props) => {
         }
       };
       getMovieDetails();
-    }, [movieInfo]);
+      window.scrollTo(0, 0);
+    }, [params.id]);
 
 
     const genres = movieInfo.genres;

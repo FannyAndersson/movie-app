@@ -7,12 +7,15 @@ export const ListContext = createContext();
 export const ListProvider = (props) => {
     const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId] = useContext(AuthContext);
 
-    const [inputName, setInputName] = useState('');
+    const [nameOfList, setNameOfList] = useState('');
+    console.log(nameOfList, 'nameoflist')
 
     const [description, setDescription] = useState('');
+    console.log(description, 'descrption')
 
     const [listId, setListId] = useState(null);
     console.log('listId', listId);
+
 
     const createList = async () => {
       try {
@@ -44,7 +47,7 @@ export const ListProvider = (props) => {
 
 
     return(
-        <ListContext.Provider value={{createList: createList, inputName, setInputName, description, setDescription}}>
+        <ListContext.Provider value={{createList: createList, nameOfList, setNameOfList, description, setDescription}}>
             {props.children}
         </ListContext.Provider>
     )

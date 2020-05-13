@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 const SearchResult = ({props}) => {
     const movieQuery = props;
-
+console.log('samfmasmfmasf ', movieQuery)
     const [resultOfSearch, setResultOfSearch] = useState('');
 
 
@@ -14,6 +14,7 @@ const SearchResult = ({props}) => {
           if (response) {
             const result = await response.json();
             setResultOfSearch(result.results);
+
           }
         } catch (error) {
           console.error(error);

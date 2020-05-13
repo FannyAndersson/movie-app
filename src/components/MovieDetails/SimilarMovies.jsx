@@ -28,7 +28,7 @@ const SimilarMovies = ({props}) => {
       }
     };
     getSimilarMovies();
-  }, []);
+  }, [props.match.params.id]);
 
   const handleClick = () => {
     setSimilarMoviesToRender(similarMoviesToRender + 4);

@@ -31,17 +31,16 @@ const Cast = ({id}) => {
       }
     };
     getCast();
-  }, []);
+  }, [id]);
 
 
   return <div>
       <div className="crew-members">
+        Director:
         {castAndCrewInfo.crew ? castAndCrewInfo.crew.map((crew, index) => {
             return <div key={index}>
                 <div className="director">
-                  {crew.job === 'Director' ? (
-                    <p>Director: {crew.name}</p>
-                  ) : null}
+                  {crew.job === 'Director' ? <span>{crew.name}, </span> : null}
                 </div>
               </div>;
           }) : null}
@@ -51,7 +50,8 @@ const Cast = ({id}) => {
         {castAndCrewInfo.cast ? castAndCrewInfo.cast
             .slice(0, castToRender)
             .map(cast => {
-              return <div key={cast.id}>
+              return (
+                <div key={cast.id}>
                   <div>
                     <Link>
                       {cast.profile_path === null ? (
@@ -84,7 +84,8 @@ const Cast = ({id}) => {
                       <p>Charachter: {cast.character}</p>
                     </div>
                   </div>
-                </div>;
+                </div>
+              );
             }) : null}
       </div>
       <div className="show-more-movies-wrapper">

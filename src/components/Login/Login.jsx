@@ -15,6 +15,9 @@ const Login = () => {
     const [activateLoginForm, setActivateLoginForm] = useState(false);
 
 
+  useEffect(() => {
+    login();
+  }, [sessionId])
 
    const login = async () => {
      try {

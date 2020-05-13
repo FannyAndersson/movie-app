@@ -28,7 +28,7 @@ const Reviews = ({id}) => {
       }
     };
     getReviews();
-  }, []);
+  }, [id]);
 
   const handleClick = () => {
     setReviewsToRender(reviewsToRender + 2)

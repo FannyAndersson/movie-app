@@ -1,7 +1,10 @@
 import React from 'react';
+import { MovieContext } from '../MovieContext';
 
 
-const Movie = ({name, price}) => {
+const Movie = () => {
+
+    const context = useContext(MovieContext);
 
     return(
         <div>
