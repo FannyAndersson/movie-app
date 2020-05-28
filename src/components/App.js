@@ -16,14 +16,15 @@ import Login from './Login/Login';
 import MyProfile from './MyProfile/MyProfile';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faTrashAlt, faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
 import {Container} from 'reactstrap';
 import {ListProvider} from './ListContext';
 import SearchResult from './Search/SearchResult';
 import Search from './Search/Search';
+import {MovieProvider} from './MovieContext';
 
 import SimilarMovies from './MovieDetails/SimilarMovies'
-library.add(fab, faStar);
+library.add(fab, faStar, faTrashAlt, faHeart, faEye);
 
 
 console.log(process.env.REACT_APP_TMDB_KEY);
@@ -44,6 +45,7 @@ function App() {
 
 
   return <AuthProvider>
+        <MovieProvider>
       <ListProvider>
         {/* <SearchProvider> */}
         <BrowserRouter>
@@ -66,6 +68,7 @@ function App() {
         </BrowserRouter>
         {/* </SearchProvider> */}
       </ListProvider>
+        </MovieProvider>
     </AuthProvider>;
 }
 

@@ -35,8 +35,10 @@ const Login = () => {
        if (response.ok) {
            const result = await response.json()
            const thisSessionId = result.session_id;
+
             setSessionId(thisSessionId)
             localStorage.setItem('session', thisSessionId);
+
         try {
         const response = await fetch(
           `https://api.themoviedb.org/3/account?api_key=404c9d315cf694929f8ad3227b130aab&session_id=${thisSessionId}`
@@ -70,7 +72,7 @@ const Login = () => {
         e.preventDefault();
         login();
         setActivateUser(true);
-        history.push('/my-profile');
+        history.push('/');
     }
 
     return <div className="login-wrapper">

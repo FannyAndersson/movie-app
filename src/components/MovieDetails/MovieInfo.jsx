@@ -4,19 +4,30 @@ import SimilarMovies from './SimilarMovies'
 import Reviews from './Reviews'
 import Cast from './Cast'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AuthContext } from '../AuthContext.jsx';
+import { MovieContext } from '../MovieContext';
+import { ListContext } from '../ListContext';
+
 
 const MovieInfo = (props) => {
     const [movieInfo, setMovieInfo] = useState('');
     const params = props.match.params;
-  console.log(params, 'det')
+
+  const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId] = useContext(AuthContext);
+
+  const [movieId, setMovieId] = useContext(MovieContext);
+  console.log(movieId, 'movieINFOMOVIEID')
+
+  const { addToFavorite, addMessageFavSuccess, addToWatchList, addMessageWatchSuccess } = useContext(ListContext);
 
     const [releaseYear, setReleaseYear] = useState('');
+
+    const [notLoggedInMessage, setNotLoggedInMessage, ] = useState(false);
 
     useEffect(() => {
       const getMovieDetails = async () => {
         try {
           const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=404c9d315cf694929f8ad3227b130aab&language=en-US`)
-          console.log(response, 'resp')
 
           if (response) {
             const result = await response.json();
@@ -24,7 +35,7 @@ const MovieInfo = (props) => {
             setMovieInfo(result);
             let releaseDate = result.release_date.slice(0, 4);
             setReleaseYear(releaseDate);
-
+             setMovieId(params.id);
 
           }
         } catch (error) {
@@ -35,6 +46,24 @@ const MovieInfo = (props) => {
       window.scrollTo(0, 0);
     }, [params.id]);
 
+    const setAddToWatchlist = () => {
+      const storageSession = localStorage.getItem('session');
+      if (sessionId === storageSession) {
+        addToWatchList();
+      } else {
+        setNotLoggedInMessage(true);
+      }
+    }
+
+    const setAddFavorite = () => {
+      const storageSession = localStorage.getItem('session');
+      if(sessionId === storageSession){
+      addToFavorite();
+      } else {
+        setNotLoggedInMessage(true);
+      }
+
+    }
 
     const genres = movieInfo.genres;
 
@@ -64,6 +93,36 @@ const MovieInfo = (props) => {
                 <FontAwesomeIcon icon="star" />
                 <p className="vote-average">{movieInfo.vote_average}</p>
               </div>
+              {addMessageFavSuccess ? <div className="speech-bubble-wrapper">
+                  <div className="speech-bubble">
+                    The movie has been added to your favorite list
+                  </div>
+                </div> : null}
+              {notLoggedInMessage ? <div className="speech-bubble-wrapper">
+                  <div className="speech-bubble">
+                    You are not logged in. Please login to save to your list
+                  </div>
+                </div> : null}
+              <div className="add-to-list">
+                <FontAwesomeIcon className="icon-heart" icon="heart" />
+                <button onClick={setAddFavorite}>Add to favorite</button>
+              </div>
+              {addMessageWatchSuccess ? <div className="speech-bubble-wrapper">
+                  <div className="speech-bubble">
+                    The movie has been added to your watchlist
+                  </div>
+                </div> : null}
+              {notLoggedInMessage ? <div className="speech-bubble-wrapper">
+                  <div className="speech-bubble">
+                    You are not logged in. Please login to save to your list
+                  </div>
+                </div> : null}
+              <div className="add-to-list">
+                <FontAwesomeIcon className="icon-eye" icon="eye" />
+                <button onClick={setAddToWatchlist}>
+                  Add to watchlist
+                </button>
+              </div>
             </div>
           </section>}
         <div className="overview"> {movieInfo.overview}</div>
@@ -81,7 +140,7 @@ const MovieInfo = (props) => {
         </div>
         <Cast id={params.id} />
         <Reviews id={params.id} />
-         <SimilarMovies props={props} />
+        <SimilarMovies props={props} />
       </div>;
 
 }

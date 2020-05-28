@@ -48,6 +48,55 @@
                 font-weight: bold;
             }
         }
+        .speech-bubble-wrapper {
+            -webkit-animation: fadein 5s;
+            -moz-animation: fadein 5s;
+            -ms-animation: fadein 5s;
+            -o-animation: fadein 5s;
+            animation: fadein 5s;
+            .speech-bubble {
+                position: relative;
+                background: #b9b55c;
+                border-radius: 5.4em;
+                width: 230px;
+                padding: 40px 10px;
+                margin: 1em 0;
+                text-align: center;
+                color: black;
+                font-weight: bold;
+                font-size: 86%;
+            }
+            .speech-bubble:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border: 20px solid transparent;
+                border-top-color: #b9b55c;
+                border-bottom: 0;
+                border-left: 0;
+                margin-left: -10px;
+                margin-bottom: -20px;
+            }
+        }
+        .add-to-list {
+            margin-bottom: 10px;
+            .icon-heart {
+                color: red;
+            }
+            .icon-eye {
+                color: blue;
+            }
+            button {
+                background: none;
+                border: none;
+                font-family: 'Raleway', sans-serif;
+                color: white;
+                font-size: 18px;
+            }
+        }
     }
 }
 

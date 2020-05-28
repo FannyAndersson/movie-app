@@ -17,6 +17,7 @@ const NowPlayingMovies = () => {
 
        if (response) {
          const result = await response.json();
+         console.log(result)
 
          if (response.ok) {
            const keys = result.results;

@@ -1,9 +1,14 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MovieList from '../MovieList';
+import { MovieContext } from '../MovieContext';
+
 
 const MostPopular = () => {
-  const [mostPopularMovies, setMostPopularMovies] = useState('');
+
+  const [mostPopularMovies, setMostPopularMovies] = useContext(MovieContext);
+  console.log('sessionId', mostPopularMovies);
+  // const [mostPopularMovies, setMostPopularMovies] = useState('');
 
 
   useEffect(() => {

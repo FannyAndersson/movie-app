@@ -36,11 +36,11 @@ const Cast = ({id}) => {
 
   return <div>
       <div className="crew-members">
-        Director:
+        <span className="director">Director:</span>
         {castAndCrewInfo.crew ? castAndCrewInfo.crew.map((crew, index) => {
             return <div key={index}>
-                <div className="director">
-                  {crew.job === 'Director' ? <span>{crew.name}, </span> : null}
+                <div className="director-div">
+                  {crew.job === 'Director' ? <span className="crew-name">{crew.name}</span> : null}
                 </div>
               </div>;
           }) : null}

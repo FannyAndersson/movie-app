@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchResult from './SearchResult';
+import { Link } from 'react-router-dom';
+
 
 const Search = () => {
   const [movieQuery, setMovieQuery] = useState('');
@@ -15,6 +17,7 @@ const Search = () => {
     }
   };
 
+
   return (
     <form className="search-wrapper" onSubmit={handleSubmit}>
       <input
@@ -29,7 +32,7 @@ const Search = () => {
       </button>
 
       <div>
-        <SearchResult props={movieQuery} />
+        <SearchResult props={movieQuery}/>
       </div>
     </form>
   );

@@ -1,13 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SimilarMovieList from './SimilarMovieList';
 import { useHistory } from 'react-router-dom';
 
 const SimilarMovies = ({props}) => {
    const history = useHistory();
 
   const params = props.match.params
-  console.log(props)
   //  const { props: { match: { params } } } = props;
 
   const [similarMovies, setSimilarMovies] = useState('');

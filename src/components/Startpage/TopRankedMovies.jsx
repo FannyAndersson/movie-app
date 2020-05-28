@@ -1,11 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
 import MovieList from '../MovieList'
 import { Link } from 'react-router-dom';
-import MovieInfo from '../MovieDetails/MovieInfo'
+// import MovieInfo from '../MovieDetails/MovieInfo'
 import {Col, Container} from 'reactstrap';
+import {MovieContext} from '../MovieContext'
 
 const TopRankedMovies = () => {
-  const [topRankedMovies, setTopRankedMovies] = useState('');
+
+   const [topRankedMovies, setTopRankedMovies] = useContext(MovieContext);
 
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const TopRankedMovies = () => {
 
   return <div>
       <h1 className="movielist-title">Top ranked movies</h1>
-      <MovieList props={topRankedMovies} />
+       <MovieList props={topRankedMovies} />
     </div>;
 };
 

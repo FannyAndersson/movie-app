@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useContext, useEffect} from 'react';
+import { Link, history } from 'react-router-dom';
 import { AuthContext } from '../AuthContext.jsx';
 
 
 const Logout = () => {
 
     const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId] = useContext(AuthContext);
-    console.log(sessionId, 'sessionid');
 
     const logout = async () => {
+
      try {
        const addBody = {
                      session_id: sessionId
@@ -32,14 +32,15 @@ const Logout = () => {
      }
    };
 
+
     const handleSubmit = () => {
         logout();
     }
 
     return(
-             <li>
+
                 <Link onClick={handleSubmit} to="/">Logout</Link>
-              </li>
+
     )
 }
 

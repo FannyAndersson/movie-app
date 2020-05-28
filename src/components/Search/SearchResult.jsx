@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 const SearchResult = ({props}) => {
     const movieQuery = props;
-console.log('samfmasmfmasf ', movieQuery)
+
     const [resultOfSearch, setResultOfSearch] = useState('');
+
 
 
     useEffect(() => {
@@ -23,13 +24,17 @@ console.log('samfmasmfmasf ', movieQuery)
       getSearchResult();
     }, [movieQuery]);
 
+    const onClickHere = () => {
+      setResultOfSearch('')
+    }
+
     return <div>
         {resultOfSearch ? <h1>Results for "{movieQuery}"</h1> : null }
         {resultOfSearch ? resultOfSearch.map(movie => {
             console.log(movie, 'movie')
               return (
                 <div className="movie-info-wrapper" key={movie.id}>
-                  <Link to={`/movie/${movie.id}`}>
+                  <Link to={`/movie/${movie.id}`} onClick={onClickHere}>
                     {' '}
                     <img
                       alt=""
@@ -48,11 +53,6 @@ console.log('samfmasmfmasf ', movieQuery)
                 </div>
               );
             }) : null}
-        <div className="show-more-movies-wrapper">
-          {/* <span className="show-more-movies-link" onClick={handleClick}>
-            Show more movies
-          </span> */}
-        </div>
       </div>;
 }
 

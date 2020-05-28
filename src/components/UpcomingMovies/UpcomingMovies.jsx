@@ -1,9 +1,14 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MovieList from '../MovieList';
+import { MovieContext } from '../MovieContext';
+
 
 const UpcomingMovies = () => {
-  const [upcomingMovies, setUpcomingMovies] = useState('');
+
+  const [upcomingMovies, setUpcomingMovies] = useContext(MovieContext);
+  console.log('upup', upcomingMovies);
+  // const [upcomingMovies, setUpcomingMovies] = useState('');
 
   useEffect(() => {
     const getUpcomingMovies = async () => {

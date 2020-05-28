@@ -7,16 +7,11 @@ import Logout from './Logout/Logout';
 const NavBar = () => {
 
   const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken] = useContext(AuthContext);
-  console.log('am i activated', activateUser);
-  console.log('do I have a sessionId', sessionId);
 
-   //fetch two localstorage values below to re-validate/re-hydrate the app.
-  //The values are as expected, but I'm being kicked back to login page
+
   const isAuthenticated = localStorage.getItem("session");
 
-  useEffect(() => {
 
-  }, [isAuthenticated])
 
     return <div>
         <nav>
@@ -31,9 +26,10 @@ const NavBar = () => {
               <Link to="/popular-movies">Pupular movies</Link>
             </li>
             {isAuthenticated ? <li>
-                <Link to="/my-profile">My profile</Link>
-                <Logout />
-              </li> : <li>
+                <Link to="/my-profile" >My profile</Link></li> : null }
+            {isAuthenticated ? <li>
+                <Logout /> </li>
+               : <li>
                 <Link to="/login">Login</Link>
               </li>}
           </ul>
