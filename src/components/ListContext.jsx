@@ -15,7 +15,7 @@ export const ListProvider = (props) => {
 
     const [description, setDescription] = useState('');
 
-    const [movieId, setMovieId] = useContext(MovieContext);
+    const {movieId, setMovieId} = useContext(MovieContext);
     console.log(movieId, 'movieIDLIST')
 
     const [listId, setListId] = useState(null);
@@ -74,6 +74,8 @@ export const ListProvider = (props) => {
             console.log(response.json(), 'favlist');
           setAddMessageFavSuccess(true);
 
+          setAddMessageWatchSuccess(false);
+
         }
       } catch (error) {
         console.log('Error:', error);
@@ -96,7 +98,7 @@ export const ListProvider = (props) => {
 
         if (response.ok) {
           setAddMessageWatchSuccess(true);
-          console.log(response.json(), 'watchlist');
+          setAddMessageFavSuccess(false);
         }
       } catch (error) {
         console.log('Error:', error);
@@ -185,7 +187,7 @@ export const ListProvider = (props) => {
 
 
     return(
-        <ListContext.Provider value={{addToFavorite: addToFavorite, getFavorite: getFavorite, createList: createList, addToWatchList: addToWatchList, getWatchlist:getWatchlist, removeFromFavorite: removeFromFavorite, removeFromWatchList: removeFromWatchList, favoriteMovie, setFavoriteMovie, watchlistMovie, setWatchlistMovie, nameOfList, setNameOfList, description, setDescription, addMessageFavSuccess, addMessageWatchSuccess}}>
+        <ListContext.Provider value={{addToFavorite: addToFavorite, getFavorite: getFavorite, createList: createList, addToWatchList: addToWatchList, getWatchlist:getWatchlist, removeFromFavorite: removeFromFavorite, removeFromWatchList: removeFromWatchList, favoriteMovie, setFavoriteMovie, watchlistMovie, setWatchlistMovie, nameOfList, setNameOfList, description, setDescription, addMessageFavSuccess, setAddMessageFavSuccess, addMessageWatchSuccess}}>
             {props.children}
         </ListContext.Provider>
     )

@@ -10,7 +10,7 @@ const WatchMovie = (movie) => {
 
     console.log(movie, 'props');
 
-const [movieId, setMovieId] = useContext(MovieContext);
+const {movieId, setMovieId} = useContext(MovieContext);
 
 const { createList, getFavorite, removeFromFavorite, removeFromWatchList, nameOfList, setNameOfList, description, setDescription, getWatchlist, favoriteMovie, setFavoriteMovie, watchlistMovie } = useContext(ListContext);
 

@@ -7,26 +7,13 @@ import {MovieContext} from '../MovieContext'
 
 const TopRankedMovies = () => {
 
-   const [topRankedMovies, setTopRankedMovies] = useContext(MovieContext);
+   const { topRankedMovies, setTopRankedMovies, getTopRankedMovies } = useContext(MovieContext);
+   console.log(topRankedMovies,'toptop')
 
 
-  useEffect(() => {
-
-    const getTopRankedMovies = async () => {
-      try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=404c9d315cf694929f8ad3227b130aab&language=en-US&page=1`);
-
-        if (response) {
-          const result = await response.json();
-          setTopRankedMovies(result.results);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getTopRankedMovies();
-  }, []);
-
+useEffect(() => {
+  getTopRankedMovies();
+},[])
 
 
   return <div>

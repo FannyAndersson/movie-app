@@ -8,7 +8,7 @@ const FavoriteMovie = (movie) => {
 
 
 
-     const [movieId, setMovieId] = useContext(MovieContext);
+     const {movieId, setMovieId} = useContext(MovieContext);
      console.log(movieId, 'movieINFOMOVIEID');
 
      const { createList, getFavorite, removeFromFavorite, nameOfList, setNameOfList, description, setDescription, getWatchlist, favoriteMovie, setFavoriteMovie, watchlistMovie } = useContext(ListContext);

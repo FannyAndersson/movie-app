@@ -53,7 +53,6 @@ function App() {
             <Header />
               {/* <SearchResult /> */}
             <Switch>
-              <div>
                 {/* <Route path="/search" exact component={SearchResult} /> */}
                 <Route path="/" exact component={Startpage} />
                 <Route path="/upcoming-movies" exact component={UpcomingMovies} />
@@ -62,7 +61,6 @@ function App() {
                 {/* <Route path='/movie/:id' component={SimilarMovies} /> */}
                 <Route path="/my-profile" exact component={MyProfile} />
                 <Route path="/login" exact component={Login} />
-              </div>
             </Switch>
           </React.Fragment>
         </BrowserRouter>

@@ -25,9 +25,9 @@ const NavBar = () => {
             <li>
               <Link to="/popular-movies">Pupular movies</Link>
             </li>
-            {isAuthenticated ? <li>
+            {sessionId ? <li>
                 <Link to="/my-profile" >My profile</Link></li> : null }
-            {isAuthenticated ? <li>
+            {sessionId ? <li>
                 <Logout /> </li>
                : <li>
                 <Link to="/login">Login</Link>

@@ -6,27 +6,13 @@ import { MovieContext } from '../MovieContext';
 
 const UpcomingMovies = () => {
 
-  const [upcomingMovies, setUpcomingMovies] = useContext(MovieContext);
+  const { upcomingMovies, setUpcomingMovie, getUpcomingMovies } = useContext(MovieContext);
   console.log('upup', upcomingMovies);
   // const [upcomingMovies, setUpcomingMovies] = useState('');
 
-  useEffect(() => {
-    const getUpcomingMovies = async () => {
-      try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=404c9d315cf694929f8ad3227b130aab&language=en-US&page=1`
-        );
-
-        if (response) {
-          const result = await response.json();
-          setUpcomingMovies(result.results);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getUpcomingMovies();
-  }, []);
+useEffect(() => {
+  getUpcomingMovies();
+},[])
 
 
   return <div>

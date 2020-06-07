@@ -15,10 +15,10 @@ const MovieInfo = (props) => {
 
   const [sessionId, setSessionId, activateUser, setActivateUser, requestToken, setRequestToken, accountId, setAccountId] = useContext(AuthContext);
 
-  const [movieId, setMovieId] = useContext(MovieContext);
+  const {movieId, setMovieId} = useContext(MovieContext);
   console.log(movieId, 'movieINFOMOVIEID')
 
-  const { addToFavorite, addMessageFavSuccess, addToWatchList, addMessageWatchSuccess } = useContext(ListContext);
+  const { addToFavorite, addMessageFavSuccess, setAddMessageFavSuccess, addToWatchList, addMessageWatchSuccess } = useContext(ListContext);
 
     const [releaseYear, setReleaseYear] = useState('');
 
@@ -50,6 +50,7 @@ const MovieInfo = (props) => {
       const storageSession = localStorage.getItem('session');
       if (sessionId === storageSession) {
         addToWatchList();
+
       } else {
         setNotLoggedInMessage(true);
       }
@@ -59,6 +60,7 @@ const MovieInfo = (props) => {
       const storageSession = localStorage.getItem('session');
       if(sessionId === storageSession){
       addToFavorite();
+
       } else {
         setNotLoggedInMessage(true);
       }
@@ -73,9 +75,9 @@ const MovieInfo = (props) => {
           </p> : <section className="movie-info-section" style={{ backgroundImage: `linear-gradient(to left, rgba(0,0, 0, 0.2) 0%, rgba(0,0, 0, 0.5) 40%, rgba(0, 0, 0, 1) 100%),url(http://image.tmdb.org/t/p/original/${movieInfo.backdrop_path})` }}>
             <div className="info-wrapper">
               <Row>
-                {movieInfo.title === movieInfo.original_title ? <h1>
+                {movieInfo.title === movieInfo.original_title ?
                     <h1 className="movieinfo-title">{movieInfo.title}</h1>
-                  </h1> : <Row>
+                  : <Row>
                     <h1 className="movieinfo-title">{movieInfo.title}</h1>
                     <p className="original-title">
                       {movieInfo.original_title}(original title)

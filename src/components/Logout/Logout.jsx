@@ -32,7 +32,6 @@ const Logout = () => {
      }
    };
 
-
     const handleSubmit = () => {
         logout();
     }

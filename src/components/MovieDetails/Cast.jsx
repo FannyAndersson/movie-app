@@ -53,7 +53,6 @@ const Cast = ({id}) => {
               return (
                 <div key={cast.id}>
                   <div>
-                    <Link>
                       {cast.profile_path === null ? (
                         <img
                           style={{
@@ -78,7 +77,6 @@ const Cast = ({id}) => {
                           src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}
                         />
                       )}
-                    </Link>
                     <div className="cast-info">
                       <p>{cast.name}</p>
                       <p>Charachter: {cast.character}</p>

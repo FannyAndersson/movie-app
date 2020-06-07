@@ -39,9 +39,9 @@ const SimilarMovies = ({props}) => {
         </h1>}
       {similarMovies ? similarMovies.slice(0, similarMoviesToRender).map(movie => {
           return <div className="movie-info-wrapper" key={movie.id}>
-              <Link onClick={() => history.push(`/movie/${movie.id}`)} className="movie-link">
+              <div onClick={() => history.push(`/movie/${movie.id}`)} className="movie-link">
                 <img alt="" src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} />
-              </Link>
+              </div>
               <div className="movie-info-div">
                 <h4>{movie.title}</h4>
                 <p className="movie-info">{movie.release_date}</p>
